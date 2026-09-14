@@ -4,14 +4,14 @@ import { ArrowUpRight, Camera, ChevronLeft, ChevronRight, Clock3, MapPin, Menu a
 import './styles.css'
 
 const images = {
-  hero: 'https://img1.wsimg.com/isteam/ip/c89b158a-ab4d-42fa-86ff-75a8683d3ad2/1-2bb92ec.png/:/rs=w:1800,h:1100,cg:true,m',
-  story: 'https://img1.wsimg.com/isteam/ip/c89b158a-ab4d-42fa-86ff-75a8683d3ad2/IMG_2834.jpeg/:/rs=w:1200,h:900,cg:true,m',
-  food: 'https://img1.wsimg.com/isteam/ip/c89b158a-ab4d-42fa-86ff-75a8683d3ad2/0720-76.jpg/:/rs=w:1200,h:850,cg:true,m',
-  room: 'https://img1.wsimg.com/isteam/ip/c89b158a-ab4d-42fa-86ff-75a8683d3ad2/260426-5.jpg/:/rs=w:1200,h:800,cg:true,m',
-  catering: 'https://img1.wsimg.com/isteam/ip/c89b158a-ab4d-42fa-86ff-75a8683d3ad2/IMG_4086.jpeg/:/rs=w:1200,h:900,cg:true,m',
-  foodTray: 'https://img1.wsimg.com/isteam/ip/c89b158a-ab4d-42fa-86ff-75a8683d3ad2/0720-56.jpg/:/rs=w:900,h:1200,cg:true,m',
-  library: 'https://img1.wsimg.com/isteam/ip/c89b158a-ab4d-42fa-86ff-75a8683d3ad2/260426-8.jpg/:/rs=w:1000,h:700,cg:true,m',
-  ballroom: 'https://img1.wsimg.com/isteam/ip/c89b158a-ab4d-42fa-86ff-75a8683d3ad2/ballroom%20(2).png/:/rs=w:1000,h:700,cg:true,m',
+  hero: 'https://img1.wsimg.com/isteam/ip/c89b158a-ab4d-42fa-86ff-75a8683d3ad2/1-2bb92ec.png/:/rs=w:1400,h:900,cg:true,m',
+  story: 'https://img1.wsimg.com/isteam/ip/c89b158a-ab4d-42fa-86ff-75a8683d3ad2/IMG_2834.jpeg/:/rs=w:900,h:700,cg:true,m',
+  food: 'https://img1.wsimg.com/isteam/ip/c89b158a-ab4d-42fa-86ff-75a8683d3ad2/0720-76.jpg/:/rs=w:1000,h:700,cg:true,m',
+  room: 'https://img1.wsimg.com/isteam/ip/c89b158a-ab4d-42fa-86ff-75a8683d3ad2/260426-5.jpg/:/rs=w:900,h:700,cg:true,m',
+  catering: 'https://img1.wsimg.com/isteam/ip/c89b158a-ab4d-42fa-86ff-75a8683d3ad2/IMG_4086.jpeg/:/rs=w:900,h:700,cg:true,m',
+  foodTray: 'https://img1.wsimg.com/isteam/ip/c89b158a-ab4d-42fa-86ff-75a8683d3ad2/0720-56.jpg/:/rs=w:700,h:900,cg:true,m',
+  library: 'https://img1.wsimg.com/isteam/ip/c89b158a-ab4d-42fa-86ff-75a8683d3ad2/260426-8.jpg/:/rs=w:700,h:500,cg:true,m',
+  ballroom: 'https://img1.wsimg.com/isteam/ip/c89b158a-ab4d-42fa-86ff-75a8683d3ad2/ballroom%20(2).png/:/rs=w:900,h:700,cg:true,m',
 }
 
 const heroSlides = [
@@ -222,7 +222,7 @@ function App() {
       <main id="top">
         <section className="hero">
           <div className="hero-slideshow" aria-label="Maria Kucina Familia atmosphere slideshow">
-            {heroSlides.map((slide, index) => <img className={index === activeHeroSlide ? 'hero-image is-active' : 'hero-image'} src={slide.src} alt={slide.alt} key={slide.src} />)}
+            {heroSlides.map((slide, index) => <img className={index === activeHeroSlide ? 'hero-image is-active' : 'hero-image'} src={slide.src} alt={slide.alt} key={slide.src} loading={index === 0 ? 'eager' : 'lazy'} fetchPriority={index === 0 ? 'high' : 'low'} decoding="async" />)}
           </div>
           <div className="hero-shade" />
           <div className="hero-content reveal">
