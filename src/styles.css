@@ -93,8 +93,12 @@
 /* Keep compact controls easy to tap without changing their visual scale. */
 .text-link, .social-link { min-height:44px; }
 .lightbox-close { align-items:center; display:flex; height:44px; justify-content:center; width:44px; }
+.circle-arrow { bottom:0; right:0; }
 @media (max-width:700px) {
 	.menu-toggle { display:flex; }
+	.experience .experience-card { margin-bottom:34px; min-height:0; padding-bottom:62px; }
+	.experience .experience-card:last-child { margin-bottom:0; }
+	.experience .circle-arrow { right:12px; }
 }
 .scroll-progress { background:var(--terracotta); height:2px; left:0; position:fixed; top:82px; transform:scaleX(0); transform-origin:left; transition:transform .16s ease-out; width:100%; z-index:12; }
 .scroll-progress { transform:scaleX(var(--scroll-progress, 0)); }
