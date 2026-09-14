@@ -60,7 +60,7 @@
 .menu-lightbox-nav:hover { background:var(--terracotta); color:var(--paper); }
 .menu-lightbox-prev { left:20px; }
 .menu-lightbox-next { right:20px; }
-.zoom-controls { align-items:center; background:rgba(250,248,243,.96); color:var(--ink); display:flex; gap:13px; left:28px; padding:7px 10px; position:fixed; top:24px; z-index:2; }
+.zoom-controls { align-items:center; background:rgba(250,248,243,.96); color:var(--ink); display:flex; gap:13px; left:50%; padding:7px 10px; position:fixed; bottom:22px; transform:translateX(-50%); z-index:2; }
 .zoom-controls button { align-items:center; background:none; border:0; color:var(--ink); font-size:22px; height:28px; line-height:1; padding:0; width:28px; }
 .zoom-controls button:hover { color:var(--terracotta); }
 .zoom-controls span { font-size:10px; letter-spacing:.08em; min-width:37px; text-align:center; }
@@ -86,7 +86,7 @@
 	.menu-gallery-grid { gap:8px; grid-template-columns:repeat(2, 1fr); }
 	.menu-lightbox { padding:70px 46px; }
 	.menu-lightbox .zoomable-menu-image { max-height:calc(100vh - 155px); max-width:calc(100vw - 92px); }
-	.menu-lightbox-nav { bottom:20px; top:auto; transform:none; }
+	.menu-lightbox-nav { bottom:78px; top:auto; transform:none; }
 	.menu-lightbox-prev { left:28%; }
 	.menu-lightbox-next { right:28%; }
 }
