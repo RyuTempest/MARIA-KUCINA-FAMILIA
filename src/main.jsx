@@ -30,6 +30,14 @@ const gallery = [
   { src: images.foodTray, alt: 'A prepared food tray for take out' },
 ]
 
+const guestNotes = [
+  { quote: 'A table where everyone is welcome.', image: images.story, alt: 'Guests sharing a meal at Maria Kucina Familia', label: 'Family table' },
+  { quote: 'Good food, warm halls, and a place to come home to.', image: images.food, alt: 'Food tray prepared at Maria Kucina Familia', label: 'The Maria table' },
+  { quote: 'Hospitality that feels like home.', image: images.room, alt: 'A private dining room at Maria Kucina Familia', label: 'Negrense welcome' },
+]
+
+const mapPreview = '/map-preview.svg'
+
 const navLinks = [
   ['Our Story', 'story'], ['Menu', 'menu'], ['Gallery', 'gallery'], ['Events', 'events'], ['Contact', 'contact']
 ]
@@ -154,6 +162,7 @@ function App() {
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const isSmallScreen = window.matchMedia('(max-width: 767px)').matches
     const heroImage = document.querySelector('.hero-image')
     const storyImage = document.querySelector('.story-image img')
     const header = document.querySelector('.site-header')
@@ -169,12 +178,12 @@ function App() {
       const storyProgress = storyBounds
         ? (window.innerHeight - storyBounds.top) / (window.innerHeight + storyBounds.height)
         : 0
-      const storyShift = Math.max(-12, Math.min(12, (0.5 - storyProgress) * 24))
+      const storyShift = isSmallScreen ? 0 : Math.max(-18, Math.min(18, (0.5 - storyProgress) * 36))
 
       header?.classList.toggle('is-scrolling', scrollPosition > 16)
       progress?.style.setProperty('--scroll-progress', `${scrollPercent * 100}%`)
       if (!prefersReducedMotion) {
-        heroImage?.style.setProperty('--parallax-y', `${Math.min(scrollPosition * 0.1, 70)}px`)
+        heroImage?.style.setProperty('--parallax-y', `${Math.min(scrollPosition * (isSmallScreen ? 0.12 : 0.5), isSmallScreen ? 24 : 150)}px`)
         storyImage?.style.setProperty('--story-shift', `${storyShift}px`)
       }
     }
@@ -281,9 +290,14 @@ function App() {
           <div className="philosophy-inner reveal"><p className="eyebrow light"><span /> What guides us</p><h2>Good food is only<br /><em>the beginning.</em></h2><div className="principles"><div><Sparkles size={19} /><strong>Family</strong><span>A table where everyone is welcome.</span></div><div><MapPin size={19} /><strong>Local</strong><span>Fresh ingredients, best in season.</span></div><div><Clock3 size={19} /><strong>Care</strong><span>Hospitality that feels like home.</span></div></div></div>
         </section>
 
+        <section className="guest-notes section" id="guest-notes">
+          <div className="section-heading reveal"><div><p className="eyebrow"><span /> From the table</p><h2>Made for <em>coming back.</em></h2></div><p className="section-aside">The feeling we hope stays with you long after the last plate is cleared.</p></div>
+          <div className="guest-notes-grid">{guestNotes.map((note, index) => <article className="guest-note reveal" key={note.label}><div className="guest-note-image"><img src={note.image} alt={note.alt} loading="lazy" /><span>0{index + 1}</span></div><p className="guest-note-quote">“{note.quote}”</p><span className="guest-note-label">{note.label}</span></article>)}</div>
+        </section>
+
         <section className="visit section" id="contact">
           <div className="visit-copy reveal"><p className="eyebrow"><span /> Guest information</p><h2>Come as you are.<br /><em>Stay awhile.</em></h2><div className="visit-detail"><h3>Smart casual, always comfortable</h3><p>No flip-flops, slippers, or rubber slides. For men, no sleeveless clothing, jersey/basketball shorts, or open-toed shoes.</p></div><div className="visit-detail"><h3>We're open daily</h3><p>6 AM - 2 PM<br />5 PM - 9 PM</p></div></div>
-          <div className="contact-panel reveal"><div className="contact-top"><p className="eyebrow light"><span /> Find us</p><h2>See you at<br /><em>Maria.</em></h2></div><div className="contact-lines"><a href="https://maps.google.com/maps?ll=10.682099,122.96564&z=14" target="_blank" rel="noreferrer"><MapPin size={18} /><span>La Salle Avenue<br />Bacolod, Negros Occidental<br />Philippines</span><ArrowUpRight size={16} /></a><a href="tel:+639369445416"><Phone size={18} /><span>+63 936 944 5416</span><ArrowUpRight size={16} /></a><a href="https://www.instagram.com/mariakucinafamilia" target="_blank" rel="noreferrer"><Camera size={18} /><span>Follow us on Instagram</span><ArrowUpRight size={16} /></a></div><a className="map-button" href="https://maps.google.com/maps?ll=10.682099,122.96564&z=14" target="_blank" rel="noreferrer">Open in Google Maps <ArrowUpRight size={17} /></a></div>
+          <div className="contact-panel reveal"><div className="contact-top"><p className="eyebrow light"><span /> Find us</p><h2>See you at<br /><em>Maria.</em></h2></div><a className="map-preview" href="https://maps.google.com/maps?ll=10.682099,122.96564&z=14" target="_blank" rel="noreferrer" aria-label="Open Maria Kucina Familia in Google Maps"><img src={mapPreview} alt="Map showing Maria Kucina Familia on La Salle Avenue in Bacolod" loading="lazy" /></a><div className="contact-lines"><a href="https://maps.google.com/maps?ll=10.682099,122.96564&z=14" target="_blank" rel="noreferrer"><MapPin size={18} /><span>La Salle Avenue<br />Bacolod, Negros Occidental<br />Philippines</span><ArrowUpRight size={16} /></a><a href="tel:+639369445416"><Phone size={18} /><span>+63 936 944 5416</span><ArrowUpRight size={16} /></a><a href="https://www.instagram.com/mariakucinafamilia" target="_blank" rel="noreferrer"><Camera size={18} /><span>Follow us on Instagram</span><ArrowUpRight size={16} /></a></div><a className="map-button" href="https://maps.google.com/maps?ll=10.682099,122.96564&z=14" target="_blank" rel="noreferrer">Open in Google Maps <ArrowUpRight size={17} /></a></div>
         </section>
       </main>
 
