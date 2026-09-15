@@ -16,7 +16,7 @@
     <text x="604" y="360">THE MARIA TABLE</text>
   </g>
   <g transform="translate(525 176)">
-    <path d="M0 42 C-42 4 -29 -35 0 -35 S42 4 0 42Z" fill="#9e3d2f" stroke="#fffaf2" stroke-width="7"/>
+    <path d="M0 42 C-42 4 -29 -35 0 -35 S42 4 0 42Z" fill="#eb7d00" stroke="#fffaf2" stroke-width="7"/>
     <circle cy="-6" r="9" fill="#fffaf2"/>
   </g>
 </svg>

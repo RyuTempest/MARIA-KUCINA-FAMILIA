@@ -533,3 +533,30 @@ button, a { -webkit-tap-highlight-color: transparent; }
 	.reveal h2 { transition: none; transform: none; }
 	.guest-note-image img, .map-preview img { transition: none; }
 }
+
+/* Amber action system */
+:root { --terracotta: #eb7d00; }
+.button, .nav-cta, .map-button { border-radius: 7px; letter-spacing: .02em; transition: background-color .25s ease-out, border-color .25s ease-out, box-shadow .25s ease-out, color .25s ease-out, transform .25s ease-out; }
+.button { padding: 14px 32px; }
+.button-light { background: var(--terracotta); border: 1px solid #c96800; box-shadow: 0 7px 16px rgba(43, 36, 32, .12); color: var(--paper); }
+.button-light:hover { background: #d87200; border-color: #b96100; box-shadow: 0 10px 20px rgba(43, 36, 32, .17); transform: scale(1.02); }
+.hero-actions .light-link { border: 1px solid var(--terracotta); border-radius: 7px; color: var(--terracotta); padding: 13px 20px; text-decoration: none; }
+.hero-actions .light-link::after { display: none; }
+.hero-actions .light-link:hover { background: rgba(235, 125, 0, .1); color: var(--terracotta); transform: scale(1.02); }
+.nav-cta { background: var(--terracotta) !important; border: 1px solid #c96800 !important; color: var(--paper) !important; padding: 10px 16px !important; }
+.nav-cta:hover { background: #d87200 !important; border-color: #b96100 !important; transform: scale(1.02); }
+.map-button { background: var(--terracotta); border: 1px solid #c96800; color: var(--paper); padding: 14px 32px; }
+.map-button:hover { background: #d87200; border-color: #b96100; color: var(--paper); transform: scale(1.02); }
+.text-link, .dark-link, .social-link, .menu-list a:hover { color: var(--terracotta); }
+.nav-links button::after, .nav-links > a:not(.nav-cta)::after, .footer-nav a::after, .footer-nav button::after { transition-duration: .2s; }
+.map-preview { border: 1px solid rgba(255, 253, 249, .18); border-radius: 8px; box-shadow: 0 10px 24px rgba(20, 15, 12, .18); overflow: hidden; }
+.map-preview iframe { background: #dfd6c8; border: 0; display: block; filter: grayscale(.7) sepia(.14) saturate(.72) contrast(.93); height: 260px; width: 100%; }
+.map-preview:hover iframe { filter: grayscale(.45) sepia(.08) saturate(.82) contrast(.96); }
+
+@media (max-width: 767px) {
+	.map-preview iframe { height: 205px; }
+	.hero-actions .light-link { padding-inline: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.button, .nav-cta, .map-button, .hero-actions .light-link { transition: none; }
+}

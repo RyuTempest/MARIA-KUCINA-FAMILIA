@@ -36,7 +36,7 @@ const guestNotes = [
   { quote: 'Hospitality that feels like home.', image: images.room, alt: 'A private dining room at Maria Kucina Familia', label: 'Negrense welcome' },
 ]
 
-const mapPreview = '/map-preview.svg'
+const mapEmbed = 'https://www.google.com/maps?q=10.682099,122.96564&z=14&output=embed'
 
 const navLinks = [
   ['Our Story', 'story'], ['Menu', 'menu'], ['Gallery', 'gallery'], ['Events', 'events'], ['Contact', 'contact']
@@ -297,7 +297,7 @@ function App() {
 
         <section className="visit section" id="contact">
           <div className="visit-copy reveal"><p className="eyebrow"><span /> Guest information</p><h2>Come as you are.<br /><em>Stay awhile.</em></h2><div className="visit-detail"><h3>Smart casual, always comfortable</h3><p>No flip-flops, slippers, or rubber slides. For men, no sleeveless clothing, jersey/basketball shorts, or open-toed shoes.</p></div><div className="visit-detail"><h3>We're open daily</h3><p>6 AM - 2 PM<br />5 PM - 9 PM</p></div></div>
-          <div className="contact-panel reveal"><div className="contact-top"><p className="eyebrow light"><span /> Find us</p><h2>See you at<br /><em>Maria.</em></h2></div><a className="map-preview" href="https://maps.google.com/maps?ll=10.682099,122.96564&z=14" target="_blank" rel="noreferrer" aria-label="Open Maria Kucina Familia in Google Maps"><img src={mapPreview} alt="Map showing Maria Kucina Familia on La Salle Avenue in Bacolod" loading="lazy" /></a><div className="contact-lines"><a href="https://maps.google.com/maps?ll=10.682099,122.96564&z=14" target="_blank" rel="noreferrer"><MapPin size={18} /><span>La Salle Avenue<br />Bacolod, Negros Occidental<br />Philippines</span><ArrowUpRight size={16} /></a><a href="tel:+639369445416"><Phone size={18} /><span>+63 936 944 5416</span><ArrowUpRight size={16} /></a><a href="https://www.instagram.com/mariakucinafamilia" target="_blank" rel="noreferrer"><Camera size={18} /><span>Follow us on Instagram</span><ArrowUpRight size={16} /></a></div><a className="map-button" href="https://maps.google.com/maps?ll=10.682099,122.96564&z=14" target="_blank" rel="noreferrer">Open in Google Maps <ArrowUpRight size={17} /></a></div>
+          <div className="contact-panel reveal"><div className="contact-top"><p className="eyebrow light"><span /> Find us</p><h2>See you at<br /><em>Maria.</em></h2></div><div className="map-preview"><iframe src={mapEmbed} title="Maria Kucina Familia location map" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></div><div className="contact-lines"><a href="https://maps.google.com/maps?ll=10.682099,122.96564&z=14" target="_blank" rel="noreferrer"><MapPin size={18} /><span>La Salle Avenue<br />Bacolod, Negros Occidental<br />Philippines</span><ArrowUpRight size={16} /></a><a href="tel:+639369445416"><Phone size={18} /><span>+63 936 944 5416</span><ArrowUpRight size={16} /></a><a href="https://www.instagram.com/mariakucinafamilia" target="_blank" rel="noreferrer"><Camera size={18} /><span>Follow us on Instagram</span><ArrowUpRight size={16} /></a></div><a className="map-button" href="https://maps.google.com/maps?ll=10.682099,122.96564&z=14" target="_blank" rel="noreferrer">Open in Google Maps <ArrowUpRight size={17} /></a></div>
         </section>
       </main>
 
