@@ -228,7 +228,7 @@ function App() {
           <div className="hero-content reveal">
             <p className="eyebrow light"><span /> A table for every story</p>
             <h1 aria-label="Come home to Maria.">{spellWord('Come')} {spellWord('home')}<br />{spellWord('to', 'accent')} {spellWord('Maria.', 'accent')}</h1>
-            <p className="hero-copy">A beloved gathering place in Bacolod where good food, Negrense hospitality, and the joy of being together share the same table.</p>
+            <p className="hero-copy">A beloved gathering place in Bacolod, where good food, Negrense hospitality, and the joy of being together share the same table.</p>
             <div className="hero-actions">
               <button className="button button-light" onClick={() => scrollTo('menu')}>Explore the menu <ArrowUpRight size={17} /></button>
               <button className="text-link light-link" onClick={() => scrollTo('contact')}>Plan your visit <ArrowUpRight size={17} /></button>
