@@ -44,7 +44,7 @@ const navLinks = [
 
 const menuSections = [
   {
-    title: 'Ala Carte Menu',
+    title: 'À la carte menu',
     note: 'Available from 10 AM to 2 PM and 5 PM to 9 PM',
     images: [
       ['https://img1.wsimg.com/isteam/ip/c89b158a-ab4d-42fa-86ff-75a8683d3ad2/6-0946922.jpg/:/rs=w:1023,h:1447', 'Ala carte menu page one'],
@@ -285,7 +285,7 @@ function App() {
         <section className="menu-section section" id="menu">
           <div className="section-heading reveal"><div><p className="eyebrow"><span /> From our table</p><h2>Food made for <em>sharing.</em></h2></div><a className="text-link dark-link" href="/menu">View full menu <ArrowUpRight size={17} /></a></div>
           <div className="menu-grid reveal">
-            <a className="menu-feature" href="/menu"><img src={images.food} alt="Maria Kucina Familia food tray" loading="lazy" /><span className="menu-label">Ala carte<br /><b>10 AM - 2 PM & 5 PM - 9 PM</b></span></a>
+            <a className="menu-feature" href="/menu"><img src={images.food} alt="Maria Kucina Familia food tray" loading="lazy" /><span className="menu-label">À la carte<br /><b>10 AM - 2 PM & 5 PM - 9 PM</b></span></a>
             <div className="menu-list">
               <a href="/menu#menu-1"><span>01</span><strong>Breakfast</strong><small>Special & all-day</small><ArrowUpRight size={17} /></a>
               <a href="/menu#menu-2"><span>02</span><strong>Cocktails, wine & liquor</strong><small>For the evening table</small><ArrowUpRight size={17} /></a>
@@ -299,7 +299,7 @@ function App() {
           <div className="experience-intro reveal"><p className="eyebrow light"><span /> The Maria experience</p><h2>Bring your people.<br /><em>We'll make room.</em></h2><p>From an easy family meal to a milestone worth gathering for, Maria is designed around the comfort of coming together.</p></div>
           <div className="experience-cards">
             <article className="experience-card reveal"><img src={images.room} alt="Private dining room at Maria Kucina Familia" loading="lazy" /><div className="experience-card-copy"><div className="card-number">01</div><h3>Dine in</h3><p>Take your time at our new home in La Salle Avenue, Bacolod. We are open daily for breakfast, lunch, and dinner.</p><button className="circle-arrow" onClick={() => scrollTo('reservation')} aria-label="See opening hours"><ArrowUpRight size={18} /></button></div></article>
-            <article className="experience-card reveal"><img src={images.foodTray} alt="Food trays prepared at Maria Kucina Familia" loading="lazy" /><div className="experience-card-copy"><div className="card-number">02</div><h3>Take out</h3><p>Food trays bring the quality of restaurant meals to your table. Available for groups of 4-6 or 8-10 with at least two days' pre-order.</p><a className="circle-arrow" href="https://mariakucinafamilia.com/food-trays" target="_blank" rel="noreferrer" aria-label="See food trays"><ArrowUpRight size={18} /></a></div></article>
+            <article className="experience-card reveal"><img src={images.foodTray} alt="Food trays prepared at Maria Kucina Familia" loading="lazy" /><div className="experience-card-copy"><div className="card-number">02</div><h3>Takeaway</h3><p>Food trays bring the quality of restaurant meals to your table. Available for groups of 4-6 or 8-10 with at least two days' pre-order.</p><a className="circle-arrow" href="https://mariakucinafamilia.com/food-trays" target="_blank" rel="noreferrer" aria-label="See food trays"><ArrowUpRight size={18} /></a></div></article>
             <article className="experience-card reveal"><img src={images.ballroom} alt="The Maria Kucina Familia ballroom" loading="lazy" /><div className="experience-card-copy"><div className="card-number">03</div><h3>Celebrate</h3><p>Private rooms, a ballroom for 200+ guests, and outside catering help turn meaningful occasions into memories.</p><button className="circle-arrow" onClick={() => scrollTo('reservation')} aria-label="Inquire about events"><ArrowUpRight size={18} /></button></div></article>
           </div>
         </section>
