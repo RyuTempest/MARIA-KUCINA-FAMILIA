@@ -39,7 +39,7 @@ const guestNotes = [
 const mapEmbed = 'https://www.google.com/maps?q=10.682099,122.96564&z=14&output=embed'
 
 const navLinks = [
-  ['Our Story', 'story'], ['Menu', 'menu'], ['Gallery', 'gallery'], ['Events', 'events'], ['Contact', 'contact']
+  ['Story', 'story'], ['Menu', 'menu'], ['Experience', 'experience'], ['Gallery', 'gallery'], ['Reserve', 'reservation']
 ]
 
 const menuSections = [
@@ -141,7 +141,7 @@ function MenuPage() {
       <header className="site-header menu-header">
         <a className="wordmark" href="/" aria-label="Maria Kucina Familia home"><span>Maria Kucina</span><strong>Familia</strong></a>
         <nav className="nav-links" aria-label="Primary navigation">
-          <a href="/">Home</a><a className="active" href="/menu">Menu</a><a href="/#story">Our Story</a><a href="/#gallery">Gallery</a><a href="/#events">Events</a><a href="/#contact">Contact</a>
+          <a href="/">Home</a><a className="active" href="/menu">Menu</a><a href="/#story">Story</a><a href="/#gallery">Gallery</a><a href="/#experience">Experience</a><a href="/#reservation">Reserve</a>
           <a className="nav-cta" href="tel:+639369445416"><Phone size={15} /> Call us</a>
         </nav>
         <a className="menu-back" href="/" aria-label="Back to home"><X size={19} /></a>
@@ -153,7 +153,7 @@ function MenuPage() {
         <section className="menu-guidance"><div><p className="eyebrow light"><span /> A note for your visit</p><h2>Come comfortable.<br /><em>Stay awhile.</em></h2></div><div><h3>Smart casual dress code</h3><p>For all guests: no flip-flops, slippers, or rubber slides.</p><p>For men: no sleeveless clothing, jersey/basketball shorts, and open-toed shoes.</p></div></section>
         <section className="menu-category menu-gallery-category"><div className="menu-category-heading"><span className="category-number">05</span><div><h2>Menu Gallery</h2><p>A closer look at the table.</p></div></div><div className="menu-gallery-grid">{menuGallery.map((image, index) => <button className="menu-gallery-image" key={image[0]} onClick={() => setLightbox(menuImages.length + index)}><img src={image[0]} alt={image[1]} loading="lazy" /></button>)}</div></section>
       </main>
-      <footer className="footer menu-footer"><div className="footer-brand"><a className="wordmark light-wordmark" href="/"><span>Maria Kucina</span><strong>Familia</strong></a><p>Good food, warm halls,<br />and a place to come home to.</p></div><div className="footer-nav"><span>Explore</span><a href="/">Home</a><a href="/menu">Menu</a><a href="/#contact">Contact</a></div><div className="footer-nav"><span>Connect</span><a href="tel:+639369445416">+63 936 944 5416</a><a href="https://www.instagram.com/mariakucinafamilia" target="_blank" rel="noreferrer">Instagram</a></div></footer>
+      <footer className="footer menu-footer"><div className="footer-brand"><a className="wordmark light-wordmark" href="/"><span>Maria Kucina</span><strong>Familia</strong></a><p>Good food, warm halls,<br />and a place to come home to.</p></div><div className="footer-nav"><span>Explore</span><a href="/">Home</a><a href="/menu">Menu</a><a href="/#reservation">Reservations</a></div><div className="footer-nav"><span>Connect</span><a href="tel:+639369445416">+63 936 944 5416</a><a href="https://www.instagram.com/mariakucinafamilia" target="_blank" rel="noreferrer">Instagram</a></div></footer>
       {activeImage && <div className="lightbox menu-lightbox" role="dialog" aria-modal="true" aria-label="Menu image viewer" onClick={() => setLightbox(null)} onTouchStart={handleMenuTouchStart} onTouchEnd={handleMenuTouchEnd}><button className="lightbox-close" onClick={() => setLightbox(null)} aria-label="Close menu image"><X /></button><div className="zoom-controls" onClick={(event) => event.stopPropagation()}><button onClick={() => setZoom((currentZoom) => Math.max(.75, currentZoom - .25))} aria-label="Zoom out">-</button><span>{Math.round(zoom * 100)}%</span><button onClick={() => setZoom((currentZoom) => Math.min(2.5, currentZoom + .25))} aria-label="Zoom in">+</button></div><button className="menu-lightbox-nav menu-lightbox-prev" onClick={(event) => { event.stopPropagation(); moveToMenuImage(-1) }} aria-label="Previous menu image"><ChevronLeft /></button><img className="zoomable-menu-image" style={{ transform: `scale(${zoom})` }} src={activeImage[0]} alt={activeImage[1]} onClick={(event) => event.stopPropagation()} /><button className="menu-lightbox-nav menu-lightbox-next" onClick={(event) => { event.stopPropagation(); moveToMenuImage(1) }} aria-label="Next menu image"><ChevronRight /></button></div>}
     </>
   )
@@ -262,7 +262,7 @@ function App() {
             <p className="hero-copy">A beloved gathering place in Bacolod, where good food, Negrense hospitality, and the joy of being together share the same table.</p>
             <div className="hero-actions">
               <button className="button button-light" onClick={() => scrollTo('menu')}>Explore the menu <ArrowUpRight size={17} /></button>
-              <button className="text-link light-link" onClick={() => scrollTo('contact')}>Plan your visit <ArrowUpRight size={17} /></button>
+              <button className="text-link light-link" onClick={() => scrollTo('reservation')}>Reserve your table <ArrowUpRight size={17} /></button>
             </div>
           </div>
           <div className="hero-note"><span>Est. in Bacolod</span><span className="line" /><span>Open daily</span></div>
@@ -278,7 +278,7 @@ function App() {
             <h2>More than a restaurant.<br /><em>A family gathering.</em></h2>
             <p>In the bustling heart of Bacolod City, Maria Kucina Familia is more than just a restaurant. It is a beloved gathering place where stories are shared and memories are made, accompanied by the Negrense tradition of heartfelt hospitality.</p>
             <p>After over nine years of welcoming guests, Maria begins a new chapter in a brand new location. The setting may be new, but the essence remains: a warm, welcoming, soulful neighbor that cherishes everyone.</p>
-            <button className="text-link dark-link" onClick={() => scrollTo('contact')}>Find your way to us <ArrowUpRight size={17} /></button>
+            <button className="text-link dark-link" onClick={() => scrollTo('reservation')}>Find your way to us <ArrowUpRight size={17} /></button>
           </div>
         </section>
 
@@ -292,14 +292,15 @@ function App() {
               <a href="/menu#menu-3"><span>03</span><strong>Pasalubong, cakes & pastries</strong><small>Something to bring home</small><ArrowUpRight size={17} /></a>
             </div>
           </div>
+          <div className="menu-editorial-strip reveal"><img src={images.foodTray} alt="A prepared food tray from Maria Kucina Familia" loading="lazy" /><img src={images.catering} alt="Maria Kucina Familia dishes prepared for a gathering" loading="lazy" /><img src={images.library} alt="The dining room at Maria Kucina Familia" loading="lazy" /></div>
         </section>
 
-        <section className="experience section" id="events">
+        <section className="experience section" id="experience">
           <div className="experience-intro reveal"><p className="eyebrow light"><span /> The Maria experience</p><h2>Bring your people.<br /><em>We'll make room.</em></h2><p>From an easy family meal to a milestone worth gathering for, Maria is designed around the comfort of coming together.</p></div>
           <div className="experience-cards">
-            <article className="experience-card reveal"><div className="card-number">01</div><h3>Dine in</h3><p>Take your time at our new home in La Salle Avenue, Bacolod. We are open daily for breakfast, lunch, and dinner.</p><button className="circle-arrow" onClick={() => scrollTo('contact')} aria-label="See opening hours"><ArrowUpRight size={18} /></button></article>
-            <article className="experience-card reveal"><div className="card-number">02</div><h3>Take out</h3><p>Food trays bring the quality of restaurant meals to your table. Available for groups of 4-6 or 8-10 with at least two days' pre-order.</p><a className="circle-arrow" href="https://mariakucinafamilia.com/food-trays" target="_blank" rel="noreferrer" aria-label="See food trays"><ArrowUpRight size={18} /></a></article>
-            <article className="experience-card reveal"><div className="card-number">03</div><h3>Celebrate</h3><p>Private rooms, a ballroom for 200+ guests, and outside catering help turn meaningful occasions into memories.</p><button className="circle-arrow" onClick={() => scrollTo('contact')} aria-label="Inquire about events"><ArrowUpRight size={18} /></button></article>
+            <article className="experience-card reveal"><img src={images.room} alt="Private dining room at Maria Kucina Familia" loading="lazy" /><div className="experience-card-copy"><div className="card-number">01</div><h3>Dine in</h3><p>Take your time at our new home in La Salle Avenue, Bacolod. We are open daily for breakfast, lunch, and dinner.</p><button className="circle-arrow" onClick={() => scrollTo('reservation')} aria-label="See opening hours"><ArrowUpRight size={18} /></button></div></article>
+            <article className="experience-card reveal"><img src={images.foodTray} alt="Food trays prepared at Maria Kucina Familia" loading="lazy" /><div className="experience-card-copy"><div className="card-number">02</div><h3>Take out</h3><p>Food trays bring the quality of restaurant meals to your table. Available for groups of 4-6 or 8-10 with at least two days' pre-order.</p><a className="circle-arrow" href="https://mariakucinafamilia.com/food-trays" target="_blank" rel="noreferrer" aria-label="See food trays"><ArrowUpRight size={18} /></a></div></article>
+            <article className="experience-card reveal"><img src={images.ballroom} alt="The Maria Kucina Familia ballroom" loading="lazy" /><div className="experience-card-copy"><div className="card-number">03</div><h3>Celebrate</h3><p>Private rooms, a ballroom for 200+ guests, and outside catering help turn meaningful occasions into memories.</p><button className="circle-arrow" onClick={() => scrollTo('reservation')} aria-label="Inquire about events"><ArrowUpRight size={18} /></button></div></article>
           </div>
         </section>
 
@@ -317,13 +318,13 @@ function App() {
           <div className="guest-notes-grid">{guestNotes.map((note, index) => <article className="guest-note reveal" key={note.label}><div className="guest-note-image"><img src={note.image} alt={note.alt} loading="lazy" /><span>0{index + 1}</span></div><p className="guest-note-quote">“{note.quote}”</p><span className="guest-note-label">{note.label}</span></article>)}</div>
         </section>
 
-        <section className="visit section" id="contact">
+        <section className="visit section" id="reservation">
           <div className="visit-copy reveal"><p className="eyebrow"><span /> Guest information</p><h2>Come as you are.<br /><em>Stay awhile.</em></h2><div className="visit-detail"><h3>Smart casual, always comfortable</h3><p>No flip-flops, slippers, or rubber slides. For men, no sleeveless clothing, jersey/basketball shorts, or open-toed shoes.</p></div><div className="visit-detail"><h3>We're open daily</h3><p>6 AM - 2 PM<br />5 PM - 9 PM</p></div></div>
           <div className="contact-panel reveal"><div className="contact-top"><p className="eyebrow light"><span /> Find us</p><h2>See you at<br /><em>Maria.</em></h2></div><div className="map-preview"><iframe src={mapEmbed} title="Maria Kucina Familia location map" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></div><div className="contact-lines"><a href="https://maps.google.com/maps?ll=10.682099,122.96564&z=14" target="_blank" rel="noreferrer"><MapPin size={18} /><span>La Salle Avenue<br />Bacolod, Negros Occidental<br />Philippines</span><ArrowUpRight size={16} /></a><a href="tel:+639369445416"><Phone size={18} /><span>+63 936 944 5416</span><ArrowUpRight size={16} /></a><a href="https://www.instagram.com/mariakucinafamilia" target="_blank" rel="noreferrer"><Camera size={18} /><span>Follow us on Instagram</span><ArrowUpRight size={16} /></a></div><a className="map-button" href="https://maps.google.com/maps?ll=10.682099,122.96564&z=14" target="_blank" rel="noreferrer">Open in Google Maps <ArrowUpRight size={17} /></a></div>
         </section>
       </main>
 
-      <footer className="footer"><div className="footer-brand"><a className="wordmark light-wordmark" href="#top"><span>Maria Kucina</span><strong>Familia</strong></a><p>Good food, warm halls,<br />and a place to come home to.</p></div><div className="footer-nav"><span>Explore</span><button onClick={() => scrollTo('story')}>Our story</button><button onClick={() => scrollTo('menu')}>Menu</button><button onClick={() => scrollTo('gallery')}>Gallery</button></div><div className="footer-nav"><span>Connect</span><a href="https://www.facebook.com/467841160256037" target="_blank" rel="noreferrer">Facebook</a><a href="https://www.instagram.com/mariakucinafamilia" target="_blank" rel="noreferrer">Instagram</a><a href="tel:+639369445416">+63 936 944 5416</a></div><div className="footer-end"><span>© 2026 Maria Kucina Familia</span><span>Bacolod City, Philippines</span></div></footer>
+      <footer className="footer"><div className="footer-brand"><a className="wordmark light-wordmark" href="#top"><span>Maria Kucina</span><strong>Familia</strong></a><p>Good food, warm halls,<br />and a place to come home to.</p></div><div className="footer-nav"><span>Explore</span><button onClick={() => scrollTo('story')}>Story</button><button onClick={() => scrollTo('menu')}>Menu</button><button onClick={() => scrollTo('experience')}>Experience</button><button onClick={() => scrollTo('gallery')}>Gallery</button></div><div className="footer-nav"><span>Connect</span><a href="#reservation">Reservations</a><a href="https://www.instagram.com/mariakucinafamilia" target="_blank" rel="noreferrer">Instagram</a><a href="tel:+639369445416">+63 936 944 5416</a></div><div className="footer-end"><span>© 2026 Maria Kucina Familia</span><span>Bacolod City, Philippines</span></div></footer>
 
       {lightbox !== null && <div className="lightbox" role="dialog" aria-modal="true" aria-label="Gallery image viewer" onClick={() => setLightbox(null)}><button className="lightbox-close" onClick={() => setLightbox(null)} aria-label="Close image viewer"><X /></button><button className="lightbox-nav prev" onClick={(event) => { event.stopPropagation(); setLightbox((lightbox - 1 + gallery.length) % gallery.length) }} aria-label="Previous image"><ChevronLeft /></button><img src={gallery[lightbox].src} alt={gallery[lightbox].alt} onClick={(event) => event.stopPropagation()} /><button className="lightbox-nav next" onClick={(event) => { event.stopPropagation(); setLightbox((lightbox + 1) % gallery.length) }} aria-label="Next image"><ChevronRight /></button></div>}
     </>
