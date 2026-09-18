@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ArrowUpRight, Camera, ChevronLeft, ChevronRight, Clock3, MapPin, Menu as MenuIcon, Phone, Sparkles, X } from 'lucide-react'
 import './styles.css'
@@ -91,9 +91,31 @@ const spellWord = (word, className = '') => <span className={`spell-word ${class
 function MenuPage() {
   const [lightbox, setLightbox] = useState(null)
   const [zoom, setZoom] = useState(1)
+  const touchStart = useRef(null)
   const menuImages = menuSections.flatMap((section) => section.images)
   const allMenuImages = [...menuImages, ...menuGallery]
   const activeImage = lightbox === null ? null : allMenuImages[lightbox]
+
+  const moveToMenuImage = (direction) => {
+    setLightbox((currentImage) => currentImage === null ? null : (currentImage + direction + allMenuImages.length) % allMenuImages.length)
+  }
+
+  const handleMenuTouchStart = (event) => {
+    const touch = event.changedTouches[0]
+    touchStart.current = { x: touch.clientX, y: touch.clientY }
+  }
+
+  const handleMenuTouchEnd = (event) => {
+    if (!touchStart.current) return
+    const touch = event.changedTouches[0]
+    const horizontalDistance = touch.clientX - touchStart.current.x
+    const verticalDistance = touch.clientY - touchStart.current.y
+    touchStart.current = null
+
+    if (Math.abs(horizontalDistance) < 50 || Math.abs(horizontalDistance) < Math.abs(verticalDistance)) return
+    event.stopPropagation()
+    moveToMenuImage(horizontalDistance < 0 ? 1 : -1)
+  }
 
   useEffect(() => {
     document.title = 'Menu | Maria Kucina Familia | Bacolod City'
@@ -132,7 +154,7 @@ function MenuPage() {
         <section className="menu-category menu-gallery-category"><div className="menu-category-heading"><span className="category-number">05</span><div><h2>Menu Gallery</h2><p>A closer look at the table.</p></div></div><div className="menu-gallery-grid">{menuGallery.map((image, index) => <button className="menu-gallery-image" key={image[0]} onClick={() => setLightbox(menuImages.length + index)}><img src={image[0]} alt={image[1]} loading="lazy" /></button>)}</div></section>
       </main>
       <footer className="footer menu-footer"><div className="footer-brand"><a className="wordmark light-wordmark" href="/"><span>Maria Kucina</span><strong>Familia</strong></a><p>Good food, warm halls,<br />and a place to come home to.</p></div><div className="footer-nav"><span>Explore</span><a href="/">Home</a><a href="/menu">Menu</a><a href="/#contact">Contact</a></div><div className="footer-nav"><span>Connect</span><a href="tel:+639369445416">+63 936 944 5416</a><a href="https://www.instagram.com/mariakucinafamilia" target="_blank" rel="noreferrer">Instagram</a></div></footer>
-      {activeImage && <div className="lightbox menu-lightbox" role="dialog" aria-modal="true" aria-label="Menu image viewer" onClick={() => setLightbox(null)}><button className="lightbox-close" onClick={() => setLightbox(null)} aria-label="Close menu image"><X /></button><div className="zoom-controls" onClick={(event) => event.stopPropagation()}><button onClick={() => setZoom((currentZoom) => Math.max(.75, currentZoom - .25))} aria-label="Zoom out">-</button><span>{Math.round(zoom * 100)}%</span><button onClick={() => setZoom((currentZoom) => Math.min(2.5, currentZoom + .25))} aria-label="Zoom in">+</button></div><button className="menu-lightbox-nav menu-lightbox-prev" onClick={(event) => { event.stopPropagation(); setLightbox((lightbox - 1 + allMenuImages.length) % allMenuImages.length) }} aria-label="Previous menu image"><ChevronLeft /></button><img className="zoomable-menu-image" style={{ transform: `scale(${zoom})` }} src={activeImage[0]} alt={activeImage[1]} onClick={(event) => event.stopPropagation()} /><button className="menu-lightbox-nav menu-lightbox-next" onClick={(event) => { event.stopPropagation(); setLightbox((lightbox + 1) % allMenuImages.length) }} aria-label="Next menu image"><ChevronRight /></button></div>}
+      {activeImage && <div className="lightbox menu-lightbox" role="dialog" aria-modal="true" aria-label="Menu image viewer" onClick={() => setLightbox(null)} onTouchStart={handleMenuTouchStart} onTouchEnd={handleMenuTouchEnd}><button className="lightbox-close" onClick={() => setLightbox(null)} aria-label="Close menu image"><X /></button><div className="zoom-controls" onClick={(event) => event.stopPropagation()}><button onClick={() => setZoom((currentZoom) => Math.max(.75, currentZoom - .25))} aria-label="Zoom out">-</button><span>{Math.round(zoom * 100)}%</span><button onClick={() => setZoom((currentZoom) => Math.min(2.5, currentZoom + .25))} aria-label="Zoom in">+</button></div><button className="menu-lightbox-nav menu-lightbox-prev" onClick={(event) => { event.stopPropagation(); moveToMenuImage(-1) }} aria-label="Previous menu image"><ChevronLeft /></button><img className="zoomable-menu-image" style={{ transform: `scale(${zoom})` }} src={activeImage[0]} alt={activeImage[1]} onClick={(event) => event.stopPropagation()} /><button className="menu-lightbox-nav menu-lightbox-next" onClick={(event) => { event.stopPropagation(); moveToMenuImage(1) }} aria-label="Next menu image"><ChevronRight /></button></div>}
     </>
   )
 }

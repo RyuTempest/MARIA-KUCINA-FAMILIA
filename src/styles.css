@@ -62,7 +62,7 @@
 .menu-gallery-image:hover img { transform:scale(1.04); }
 .menu-footer { margin-top:0; }
 .menu-lightbox { overflow:auto; padding:78px 80px; }
-.menu-lightbox .zoomable-menu-image { cursor:zoom-in; height:auto; max-height:calc(100vh - 145px); max-width:calc(100vw - 160px); object-fit:contain; transition:transform .3s ease; width:auto; }
+.menu-lightbox .zoomable-menu-image { cursor:zoom-in; height:auto; max-height:calc(100vh - 145px); max-width:calc(100vw - 160px); object-fit:contain; touch-action:pan-y; transition:transform .3s ease; width:auto; }
 .menu-lightbox-nav { align-items:center; background:rgba(250,248,243,.94); border:0; color:var(--ink); display:flex; height:48px; justify-content:center; position:fixed; top:50%; transform:translateY(-50%); width:48px; z-index:2; }
 .menu-lightbox-nav:hover { background:var(--terracotta); color:var(--paper); }
 .menu-lightbox-prev { left:20px; }
@@ -94,8 +94,8 @@
 	.menu-lightbox { padding:70px 46px; }
 	.menu-lightbox .zoomable-menu-image { max-height:calc(100vh - 155px); max-width:calc(100vw - 92px); }
 	.menu-lightbox-nav { bottom:78px; top:auto; transform:none; }
-	.menu-lightbox-prev { left:28%; }
-	.menu-lightbox-next { right:28%; }
+	.menu-lightbox-prev { left:24%; }
+	.menu-lightbox-next { right:24%; }
 }
 
 /* Keep compact controls easy to tap without changing their visual scale. */
